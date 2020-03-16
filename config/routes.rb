@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get '/users/profile', to: 'users#show'
     post '/login', to: 'sessions#create'
     post '/users/new', to: 'users#create'
+    get '/tasks', to: 'tasks#index'
+    post 'tasks/new', to: 'tasks#create'
   end
   get '*not_found' => 'application#rescue404'
   post '*not_found' => 'application#rescue404'

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
           current_user: @current_user
       }
     else
-      render status: 401, json: {status: 401, msg: "Invalid email or password."}
+      render status: 401, json: {status: 401, msg: "Invalid name or password."}
     end
   end
 end
