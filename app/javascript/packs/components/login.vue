@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        <h1>ログイン</h1>
         <p v-if="$route.query.redirect" class="text-danger">ログインしてください。</p>
         <form @submit.prevent="login">
             <div class="form-group">
@@ -66,7 +65,7 @@
                     if(!loggedIn){
                         _this.error = true
                     }else{
-                        _this.$router.replace(_this.$route.query.redirect || '/')
+                        _this.$router.push('/')
                     }
                 })
             }

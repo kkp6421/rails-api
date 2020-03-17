@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root to: 'static_pages#index'
   get '/about', to: 'static_pages#index'
   get '/contact', to: 'static_pages#index'
+  get '/login', to: 'static_pages#index'
+  get '/users/new', to: 'static_pages#index'
   scope :api do
     get '/users/profile', to: 'users#show'
     post '/login', to: 'sessions#create'
