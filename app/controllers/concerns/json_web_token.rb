@@ -1,7 +1,8 @@
 module JsonWebToken
   require 'jwt'
 
-  SECRET_KEY = Rails.application.secrets.secret_key_base
+  SECRET_KEY = OpenSSL::PKey::RSA.generate(2048)
+  PUBLIC_KEY = SECRET_KEY.public_key
 
   def jwt_authenticate
     if request.headers['Authorization'].blank?
@@ -24,11 +25,11 @@ module JsonWebToken
 
   def encode(user_id, exp=1.day.from_now.to_i)
     payload = {user_id: user_id, exp: exp}
-    JWT.encode(payload, SECRET_KEY, 'HS256')
+    JWT.encode(payload, SECRET_KEY, 'RS256')
   end
 
   def decode(token)
-      decode_jwt = JWT.decode(token, SECRET_KEY, true, {algorithm: 'HS256'})
+      decode_jwt = JWT.decode(token, PUBLIC_KEY, true, {algorithm: 'RS256'})
       decode_jwt.first
   end
 end

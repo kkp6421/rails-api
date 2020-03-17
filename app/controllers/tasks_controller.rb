@@ -15,8 +15,17 @@ class TasksController < ApplicationController
     end
   end
 
+  def done
+    task = Task.find(params[:id])
+    if task.update(task_params)
+      render statue: 200, json: {status: 200, task: task}
+    else
+      render statue: 400, json: {statue: 400, msg: task.errors}
+    end
+  end
+
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :is_done)
   end
 
 end
