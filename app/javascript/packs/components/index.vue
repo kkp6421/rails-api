@@ -6,10 +6,11 @@
                 <input class="form-control" placeholder="Taskを入力してください。" v-model="newTaskContent">
                 <div class="text-danger" v-show="emptyError">内容を入力してください。</div>
             </div>
-            <div class="col-9 col-lg-2 col-md-2">
+            <div class="col-3 col-lg-2 col-md-2">
                 <b-icon icon="plus" font-scale="3" class="bg-danger rounded-circle text-white" v-on:click="createTask"></b-icon>
             </div>
         </div>
+        <br/>
         <h1>未完了Task</h1>
         <div class="task-list">
             <b-list-group>
